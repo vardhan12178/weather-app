@@ -11,7 +11,9 @@ const WeatherApp = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [isListening, setIsListening] = useState(false)
-  const api_key = '0857bdfbf9822bcb5f4d0f481d5e160a'
+  const api_key = process.env.REACT_APP_API_KEY
+  console.log('API Key:', process.env.REACT_APP_API_KEY)
+
 
   useEffect(() => {
     const fetchWeather = async (lat, lon) => {
@@ -48,7 +50,7 @@ const WeatherApp = () => {
       setError('Geolocation is not supported by this browser.')
       setLoading(false)
     }
-  }, [])
+  }, [api_key])
 
   const handleInputChange = (e) => {
     setLocation(e.target.value)
@@ -189,7 +191,7 @@ const WeatherApp = () => {
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
             />
-            
+           
             <i
               className={`fa-solid fa-microphone ${isListening ? 'listening' : ''}`}
               onClick={startListening}
