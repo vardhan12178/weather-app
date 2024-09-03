@@ -12,7 +12,7 @@ const WeatherApp = () => {
   const [error, setError] = useState(null)
   const [isListening, setIsListening] = useState(false)
   const api_key = process.env.REACT_APP_API_KEY
-  console.log('API Key:', process.env.REACT_APP_API_KEY)
+
 
 
   useEffect(() => {
